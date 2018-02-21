@@ -5,13 +5,25 @@
  */
 package org.unitec.finalheroku;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import org.springframework.data.annotation.Id;
+
 /**
  *
  * @author T-107
  */
 public class Mensajitos {
+   @Id
+   private String id;
     private String titulo;
     private String cuerpo;
+    private LocalDate fecha;
+    private LocalTime hora;
+        
+    public Mensajitos(String id) {
+        this.id = id;
+    }
 
 
 
@@ -37,6 +49,40 @@ public class Mensajitos {
     public Mensajitos(String titulo, String cuerpo) {
         this.titulo = titulo;
         this.cuerpo = cuerpo;
+        fecha=LocalDate.now();
+        hora=LocalTime.now();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Mensajitos(String id, String titulo, String cuerpo) {
+        this.id = id;
+        this.titulo = titulo;
+        this.cuerpo = cuerpo;
+        fecha=LocalDate.now();
+        hora=LocalTime.now();
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
     
 }
