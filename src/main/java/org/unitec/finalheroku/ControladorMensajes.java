@@ -68,6 +68,16 @@ public class ControladorMensajes {
         repoMensa.save(mensa);
         return new Estatus(true, "Guardado con exito");
     }
+    //guardar estilo json,desde angular
+    @CrossOrigin
+    @RequestMapping(value = "/mensajitos/{id}", method = RequestMethod.DELETE,
+    headers = {"Accept=application/json"})
+    public Estatus borrarJSON(@RequestBody String json)throws Exception{
+        ObjectMapper maper=new ObjectMapper();
+        Mensajitos mensa=maper.readValue(json,Mensajitos.class);
+        repoMensa.delete(mensa);
+        return new Estatus(true, "Borrado con exito");
+    }    
     
     //Borrar
     @CrossOrigin
