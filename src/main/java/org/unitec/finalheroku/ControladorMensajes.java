@@ -78,7 +78,7 @@ public class ControladorMensajes {
     }
     //borrar estilo json,desde angular
     @CrossOrigin
-    @RequestMapping(value = "/mensajitos/{id}", method = RequestMethod.DELETE,
+    @RequestMapping(value = "/mensajitos/id", method = RequestMethod.DELETE,
     headers = {"Accept=application/json"})
     public Estatus borrarJSON(@RequestBody String json)throws Exception{
         ObjectMapper maper=new ObjectMapper();
