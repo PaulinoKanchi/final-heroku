@@ -85,7 +85,7 @@ public class ControladorMensajes {
         Mensajitos mensa=maper.readValue(json,Mensajitos.class);
         repoMensa.delete(mensa);
         return new Estatus(true, "Borrado con exito");
-    }    
+    }
         //actualizar estilo json,desde angular
     @CrossOrigin
     @RequestMapping(value = "/mensajitos/", method = RequestMethod.PUT,
