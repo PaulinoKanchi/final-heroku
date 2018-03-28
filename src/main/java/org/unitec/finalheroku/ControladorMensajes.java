@@ -96,4 +96,12 @@ public class ControladorMensajes {
         repoMensa.delete(mensa);
         return new Estatus(true, "Borrado con exito");
     }
+            //busacar por id estilo json,desde angular
+    @CrossOrigin
+    @RequestMapping(value = "/mensajitos/", method = RequestMethod.GET,
+    headers = {"Accept=application/json"})
+    public Estatus busJSON(@RequestBody String json)throws Exception{
+        repoMensa.findOne(json);
+        return new Estatus(true, "Encontrado");
+    } 
 }
