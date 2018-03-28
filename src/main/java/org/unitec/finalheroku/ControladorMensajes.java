@@ -57,7 +57,15 @@ public class ControladorMensajes {
         repoMensa.save(new Mensajitos(titulo, cuerpo));
         return new Estatus(true, "Guardado con exito");
     }
-    
+        //Borrar
+    @CrossOrigin
+    @RequestMapping(value = "/mensajito/{id}", method = RequestMethod.DELETE,
+    headers = {"Accept=application/json"})
+    public Estatus borrarMensaje(@PathVariable String id) {
+        Estatus estatus = new Estatus(true, "Borrado con exito");
+        repoMensa.delete(new Mensajitos(id));
+        return estatus;
+    }
     //guardar estilo json,desde angular
     @CrossOrigin
     @RequestMapping(value = "/mensajitos/", method = RequestMethod.POST,
@@ -68,9 +76,9 @@ public class ControladorMensajes {
         repoMensa.save(mensa);
         return new Estatus(true, "Guardado con exito");
     }
-    //guardar estilo json,desde angular
+    //borrar estilo json,desde angular
     @CrossOrigin
-    @RequestMapping(value = "/mensajitos/{id}", method = RequestMethod.DELETE,
+    @RequestMapping(value = "/mensajitos/", method = RequestMethod.DELETE,
     headers = {"Accept=application/json"})
     public Estatus borrarJSON(@RequestBody String json)throws Exception{
         ObjectMapper maper=new ObjectMapper();
@@ -78,14 +86,15 @@ public class ControladorMensajes {
         repoMensa.delete(mensa);
         return new Estatus(true, "Borrado con exito");
     }    
-    
-    //Borrar
+        //actualizar estilo json,desde angular
     @CrossOrigin
-    @RequestMapping(value = "/mensajito/{id}", method = RequestMethod.DELETE,
+    @RequestMapping(value = "/mensajitos/", method = RequestMethod.PUT,
     headers = {"Accept=application/json"})
-    public Estatus borrarMensaje(@PathVariable String id) {
-        Estatus estatus = new Estatus(true, "Borrado con exito");
-        repoMensa.delete(new Mensajitos(id));
-        return estatus;
-    }
+    public Estatus ACTUALIZARJSON(@RequestBody String json)throws Exception{
+        ObjectMapper maper=new ObjectMapper();
+        Mensajitos mensa=maper.readValue(json,Mensajitos.class);
+        repoMensa.delete(mensa);
+        return new Estatus(true, "Actualizado con exito");
+    }  
+
 }
