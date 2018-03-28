@@ -102,8 +102,9 @@ public class ControladorMensajes {
     headers = {"Accept=application/json"})
     public Mensajitos busJSON(@RequestBody String json)throws Exception{
 ObjectMapper maper = new ObjectMapper();
-        Mensajitos alumno=    maper.readValue(json, Mensajitos.class);
-        return alumno;       
+        Mensajitos alumno=    maper.readValue(json, Mensajitos.class);      
+        return alumno;
+        
 // return repoMensa.findOne(id);
     } 
 }
