@@ -78,7 +78,7 @@ public class ControladorMensajes {
     }
     //borrar estilo json,desde angular
     @CrossOrigin
-    @RequestMapping(value = "/mensajitos/id", method = RequestMethod.DELETE,
+    @RequestMapping(value = "/mensajitos/", method = RequestMethod.DELETE,
     headers = {"Accept=application/json"})
     public Estatus borrarJSON(@RequestBody String json)throws Exception{
         ObjectMapper maper=new ObjectMapper();
@@ -96,12 +96,12 @@ public class ControladorMensajes {
         repoMensa.save(mensa);
         return new Estatus(true, "Actualizado con exito");
     }  
-        //buacar por id estilo json,desde angular
-    @CrossOrigin
-    @RequestMapping(value = "/mensajitos/", method = RequestMethod.GET,
-    headers = {"Accept=application/json"})
-    public Estatus buscaridJSON(@RequestBody String json)throws Exception{
-        repoMensa.findOne(json);
-        return new Estatus(true, "Encontrado");
-    }  
+//        //buacar por id estilo json,desde angular
+//    @CrossOrigin
+//    @RequestMapping(value = "/mensajitos/", method = RequestMethod.GET,
+//    headers = {"Accept=application/json"})
+//    public Estatus buscaridJSON(@RequestBody String json)throws Exception{
+//        repoMensa.findOne(json);
+//        return new Estatus(true, "Encontrado");
+//    }  
 }
