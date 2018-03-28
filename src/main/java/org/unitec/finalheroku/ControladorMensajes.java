@@ -93,7 +93,7 @@ public class ControladorMensajes {
     public Estatus ACTUALIZARJSON(@RequestBody String json)throws Exception{
         ObjectMapper maper=new ObjectMapper();
         Mensajitos mensa=maper.readValue(json,Mensajitos.class);
-        repoMensa.delete(mensa);
+        repoMensa.save(mensa);
         return new Estatus(true, "Actualizado con exito");
     }  
 
