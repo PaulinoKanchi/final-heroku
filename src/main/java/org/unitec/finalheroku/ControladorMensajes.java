@@ -98,9 +98,12 @@ public class ControladorMensajes {
     }
             //busacar por id estilo json,desde angular
     @CrossOrigin
-    @RequestMapping(value = "/mensajitos/{id}", method = RequestMethod.GET,
+    @RequestMapping(value = "/mensajitos/", method = RequestMethod.GET,
     headers = {"Accept=application/json"})
-    public Mensajitos busJSON(@PathVariable String id)throws Exception{
-        return repoMensa.findOne(id);
+    public Mensajitos busJSON(@RequestBody String json)throws Exception{
+ObjectMapper maper = new ObjectMapper();
+        Mensajitos alumno=    maper.readValue(json, Mensajitos.class);
+        return alumno;       
+// return repoMensa.findOne(id);
     } 
 }
