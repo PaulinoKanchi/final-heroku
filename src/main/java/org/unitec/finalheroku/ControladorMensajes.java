@@ -58,14 +58,14 @@ public class ControladorMensajes {
         return new Estatus(true, "Guardado con exito");
     }
         //Borrar
-//    @CrossOrigin
-//    @RequestMapping(value = "/mensajito/{id}", method = RequestMethod.DELETE,
-//    headers = {"Accept=application/json"})
-//    public Estatus borrarMensaje(@PathVariable String id) {
-//        Estatus estatus = new Estatus(true, "Borrado con exito");
-//        repoMensa.delete(new Mensajitos(id));
-//        return estatus;
-//    }
+    @CrossOrigin
+    @RequestMapping(value = "/mensajito/{id}", method = RequestMethod.DELETE,
+    headers = {"Accept=application/json"})
+    public Estatus borrarMensaje(@PathVariable String id) {
+        Estatus estatus = new Estatus(true, "Borrado con exito");
+        repoMensa.delete(new Mensajitos(id));
+        return estatus;
+    }
     //guardar estilo json,desde angular
     @CrossOrigin
     @RequestMapping(value = "/mensajitos/", method = RequestMethod.POST,
@@ -88,7 +88,7 @@ public class ControladorMensajes {
     }  
     //borrar estilo json,desde angular
     @CrossOrigin
-    @RequestMapping(value = "/mensajitos/{id}", method = RequestMethod.DELETE,
+    @RequestMapping(value = "/mensajitos/", method = RequestMethod.DELETE,
     headers = {"Accept=application/json"})
     public Estatus borrarJSON(@RequestBody String json)throws Exception{
         ObjectMapper maper=new ObjectMapper();
